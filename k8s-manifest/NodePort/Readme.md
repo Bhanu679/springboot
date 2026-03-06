@@ -73,7 +73,7 @@ kubectl apply -f spring-nodeport.yml
 ### Check Service Status
 
 ```bash
-kubectl get svc spring-service-np
+kubectl get svc spring-svc-np
 
 ```
 
@@ -111,7 +111,7 @@ ssh -i "your-key.pem" -L 8081:192.168.49.2:30037 ubuntu@<EC2-PUBLIC-IP>
 If you prefer using Kubernetes native tools, run this on the **EC2 instance**:
 
 ```bash
-kubectl port-forward --address 0.0.0.0 service/spring-service-np 8081:8081
+kubectl port-forward --address 0.0.0.0 service/spring-svc-np 8081:8081
 
 ```
 
@@ -124,12 +124,6 @@ kubectl port-forward --address 0.0.0.0 service/spring-service-np 8081:8081
 Open your local browser and navigate to:
 **`http://localhost:8081`**
 
-### 💡 MCQ Quick Fact:
 
-In a **NodePort** service:
-
-* **Port:** The port used for internal cluster communication (ClusterIP).
-* **TargetPort:** The port on which the Spring Boot application is actually listening inside the container.
-* **NodePort:** The high-range port (30037) opened on the Node's IP to accept external traffic.
 
 ---
